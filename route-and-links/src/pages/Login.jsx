@@ -1,0 +1,10 @@
+import LoginButton from "../components/LoginButton";
+
+export default function Login(){
+	return (
+		<div>
+			<h2>Login page</h2>
+			<LoginButton/>
+		</div>
+	)
+}
