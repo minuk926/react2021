@@ -8,6 +8,9 @@ import Example5 from "./components/Example5";
 import useWindowWidth from "./hooks/useWindowWidth";
 import withHasMounted from "./hocs/withHasMounted";
 import useHasMounted from "./hocs/useHasMounted";
+import Example6 from "./components/Example6";
+import Example7 from "./components/Example7";
+import Example8 from "./components/Example8";
 
 function App({ hasMounted }) {
     const width = useWindowWidth();
@@ -17,12 +20,15 @@ function App({ hasMounted }) {
 
     return (
     <div className="App">
+        {width}
       {/*<Example1/>*/}
       {/*<Example2/>*/}
       {/*<Example3/>*/}
       {/*<Example4/>*/}
       {/*<Example5/>*/}
-        {width}
+      {/*  <Example6/>*/}
+      {/*  <Example7/>*/}
+        <Example8/>
     </div>
   );
 }
