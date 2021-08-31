@@ -4,11 +4,15 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import App2 from "./App2";
+import Portal from "./Portal";
+import Forward from "./Forward";
 
 ReactDOM.render(
   <React.StrictMode>
     <App />
     <App2 />
+    <Portal />
+    <Forward/>
   </React.StrictMode>,
   document.getElementById('root')
 );
