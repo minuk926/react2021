@@ -13,15 +13,24 @@ module.exports = {
 		filename: 'main.js'
 	},
 
-	// css
+	// scss
 	module: {
 		rules: [
 			{
-				test: /\.css$/,
-				// 순서가 중요 : style-loader 먼저 load
+				test: /\.s?css$/,
+				// 순서가 중요 : sass-loader, postcss-loader, css-loader 순서로 load
 				use: [
 					'style-loader',
-					'css-loader'
+					'css-loader',
+					'postcss-loader',
+					'sass-loader'
+				]
+			},
+			{
+				test: /\.js$/,
+				// 순서가 중요 : sass-loader, postcss-loader, css-loader 순서로 load
+				use: [
+					'babel-loader'
 				]
 			}
 		]
