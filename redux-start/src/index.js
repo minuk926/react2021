@@ -4,18 +4,21 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import store from "./redux/store";
-import {addTodo} from "./redux/actions";
+import {addTodo, completeTodo, showCompleteTodo} from "./redux/actions";
 
-store.subscribe(()=>{
+const unsubscribe = store.subscribe(()=>{
     console.log(store.getState());
-})
-//console.log(store);
+});
 
 store.dispatch(addTodo("coding"));
-store.dispatch(addTodo("read book"));
-store.dispatch(addTodo("eat"));
-//console.log(store.getState());
-//console.log(store.subscribe);
+store.dispatch(completeTodo(0));
+store.dispatch(showCompleteTodo());
+// store.dispatch(addTodo("read book"));
+// store.dispatch(addTodo("eat"));
+// unsubscribe();
+// store.dispatch(addTodo("coding"));
+// store.dispatch(addTodo("read book"));
+// store.dispatch(addTodo("eat"));
 
 ReactDOM.render(
   <React.StrictMode>
