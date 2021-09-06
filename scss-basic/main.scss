@@ -1,0 +1,194 @@
+/* 변수 */
+$color: tomato;
+
+/* 중첩 : > 자식선택자 지정 */
+.container {
+	h1{
+		color: $color;
+	}
+	ul{
+		>li{
+			font-size: 40px;
+			.name{
+				color: royalblue;
+			}
+			.age{
+				color: orange;
+			}
+		}
+	}
+}
+
+/* 상위 선택자 */
+.btn {
+	position: absolute;
+	&.active {
+		color: red;
+	}
+}
+
+.list {
+	li {
+		&:last-child{
+			margin-right: 0;
+		}
+	}
+}
+
+.fs {
+	&-samll { font-size: 12px; }
+	&-mdeium { font-size: 14px; }
+	&-large { font-size: 16px; }
+}
+
+/* 중첩된 속성 */
+.box {
+	font: {
+		weight: bold;
+		size: 10px;
+		family: sans-serif;
+	};
+	margin: {
+		top: 10px;
+		left: 20px;
+	};
+	padding: {
+		top: 10px;
+		bottom: 40px;
+		left: 20px;
+		right: 30px;
+	};
+}
+
+/* 연산자 : 나누기(/) 연산자는 () 또는 변수나 다른연산자와 함께 사용시 가능 */
+
+/* 재활용 : @Mixin & @include */
+@mixin center {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.container {
+	@include center;
+	.item {
+		@include center;
+	}
+}
+.box {
+	@include center;
+}
+
+/* 인수 및 기본값 지정 */
+@mixin box($size: 100px, $color: tomato) {
+	width: $size;
+	height: $size;
+	background-color: $color;
+}
+.container {
+	@include box(200px, red);
+	.item {
+		@include box
+	}
+}
+.box {
+	@include box($color: blue);
+}
+
+/* 반복문 */
+@for $i from 1 through 10 {
+	.box:nth-child(#{$i}) {
+		width: 100px * $i;
+	}
+}
+
+/* 함수 */
+@function ratio($size, $ratio){
+	@return $size * $ratio
+}
+
+.box1 {
+	$width: 100px;
+	width: $width;
+	height: ratio($width, 1 / 2);
+	@include center;
+}
+
+/* 내장(색상) 함수 */
+.box3 {
+	$color: royalblue;
+	width: 200px;
+	height: 100px;
+	margin: 20px;
+	border-radius: 10px;
+	background-color: $color;
+	&:hover {
+		background-color: darken($color, 10%);
+	}
+	&.built-in {
+		background-color: mix($color, red);
+	}
+	&.built-in2 {
+		background-color: rgba($color, .5);  /* rgba(x,x,x, .5)*/
+	}
+	&.built-in3 {
+		background-color: saturate($color, 40%);
+	}
+	&.built-in4 {
+		background-color: desaturate($color, 40%);
+	}
+	&.built-in5 {
+		background-color: grayscale($color);
+	}
+	&.built-in6 {
+		background-color: invert($color);
+	}
+}
+
+/* 가져오기 */
+@import url('./scss/sub.scss'); // css
+@import './scss/sub', './scss/sub2';
+
+/* data & 반복문 */
+$number: 1;
+$string: bold;
+$color: red;
+$boolean: true;
+$null: null;
+$list: orange, blue, yellow;
+$map: (
+    o: orange,
+	b: blue,
+	y: yellow
+);
+@each $c in $list {
+	.box5 {
+		color: $c;
+	}
+}
+@each $k, $v in $map {
+	.box-#{$k} {
+		color: $v;
+	}
+}
+
+/* 재활용 : @content */
+@mixin left-top {
+	position: absolute;
+	top: 0;
+	left: 0;
+	@content
+}
+.container2 {
+	width: 100px;
+	height: 100px;
+	@include left-top;
+}
+.box6 {
+	width: 200px;
+	height: 300px;
+	@include left-top{
+		bottom: 0;
+		right: 0;
+		margin: auto;
+	}
+}
