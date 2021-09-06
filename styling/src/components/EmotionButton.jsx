@@ -1,11 +1,11 @@
 /*
 
 npm i @emotion/core @emotion/styled
-@emotion/react @emotion/babel-preset-css-prop
+@emotion/react @emotion/babel-preset-scss-prop
 */
 
 /** @jsxImportSource @emotion/react */
-//import {jsx, css} from '@emotion/react';
+//import {jsx, scss} from '@emotion/react';
 import styled from '@emotion/styled';
 
 const EmotionButton = styled.button`

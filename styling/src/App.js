@@ -1,5 +1,5 @@
 //import logo from './logo.svg';
-//import './App.css';
+//import './App.scss';
 //import './App.scss';
 
 import styles from "./App.module.css";
